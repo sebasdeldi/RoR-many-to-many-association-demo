@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lista de productos</h1>
+
+<table class="professors">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Categorias</th>
+      <th>Precio</th>
+      <th>Opciones</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.categories.map(&:name).sort.join(", ") %></td>
+        <td><%= product.price %> </td>
+        <td><%= link_to 'Editar', edit_product_path(product) %></td>
+        <td><%= link_to 'Eliminar', product, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<div class="links">
+  <%= link_to 'Agregar producto', new_product_path %><br>
+  <%= link_to 'Agregar categoria', new_category_path %>
+</div>
